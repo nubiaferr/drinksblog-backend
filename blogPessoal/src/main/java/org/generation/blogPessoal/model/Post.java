@@ -9,23 +9,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "post")
+@Table(name = "post_tb")
 public class Post {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
-	@Size(min = 1, max = 100)
+	@NotBlank(message = "O campo não pode ser vazio ou nulo")
+	@Size(min = 1, max = 100, message = "Tamanho mínimo de 1 caractere e máximo de 100 caracteres")
 	private String titulo;
 	
-	@NotNull
-	@Size(min = 10, max = 1000)
+	@NotBlank (message = "O campo não pode ser vazio ou nulo")
+	@Size(min = 1, max = 1000, message = "Tamanho mínimo de 10 caracteres e máximo de 1000 caracteres")
 	private String texto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
