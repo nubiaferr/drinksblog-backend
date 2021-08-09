@@ -22,12 +22,11 @@ public class Theme {
 	private long id;
 	
 	@NotNull
-	private String descricao;
+	private String description;
 	
-	@OneToMany (mappedBy = "tema", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("tema")
+	@OneToMany (mappedBy = "theme", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("theme")
 	private List<Post> post;
-	
 	
 	public long getId() {
 		return id;
@@ -35,11 +34,13 @@ public class Theme {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getDescricao() {
-		return descricao;
+	
+	
+	public String getDescription() {
+		return description;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public List<Post> getPost() {
 		return post;

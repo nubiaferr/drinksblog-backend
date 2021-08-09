@@ -35,19 +35,19 @@ public class ThemeController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Theme>> getByName(@PathVariable String name){
-		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(name));
+	@GetMapping("/description/{description}")
+	public ResponseEntity<List<Theme>> getByName(@PathVariable String description){
+		return ResponseEntity.ok(repository.findAllByDescriptionContainingIgnoreCase(description));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Theme> post (@RequestBody Theme tema){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
+	public ResponseEntity<Theme> post (@RequestBody Theme theme){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(theme));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Theme> put (@RequestBody Theme tema){
-		return ResponseEntity.ok(repository.save(tema));
+	public ResponseEntity<Theme> put (@RequestBody Theme theme){
+		return ResponseEntity.ok(repository.save(theme));
 	}
 	
 	@DeleteMapping("/{id}")

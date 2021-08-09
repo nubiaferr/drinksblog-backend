@@ -25,18 +25,23 @@ public class Post {
 
 	@NotBlank(message = "O campo não pode ser vazio ou nulo")
 	@Size(min = 1, max = 100, message = "Tamanho mínimo de 1 caractere e máximo de 100 caracteres")
-	private String titulo;
+	private String title;
 
 	@NotBlank(message = "O campo não pode ser vazio ou nulo")
 	@Size(min = 1, max = 1000, message = "Tamanho mínimo de 10 caracteres e máximo de 1000 caracteres")
-	private String texto;
+	private String text;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	@ManyToOne
 	@JsonIgnoreProperties("post")  
-	private Theme tema;
+	private Theme theme;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("post")  
+	private User user;
+
 
 	public long getId() {
 		return id;
@@ -46,21 +51,23 @@ public class Post {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
+
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getTexto() {
-		return texto;
+	public String getText() {
+		return text;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setText(String text) {
+		this.text = text;
 	}
+
 
 	public Date getDate() {
 		return date;
@@ -70,12 +77,21 @@ public class Post {
 		this.date = date;
 	}
 
-	public Theme getTema() {
-		return tema;
+	public Theme getTheme() {
+		return theme;
 	}
 
-	public void setTema(Theme tema) {
-		this.tema = tema;
+	public void setTheme(Theme theme) {
+		this.theme = theme;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
 }
