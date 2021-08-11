@@ -22,7 +22,7 @@ public class Theme {
 	private long id;
 	
 	@NotNull
-	private String description;
+	private String title;
 	
 	@OneToMany (mappedBy = "theme", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("theme")
@@ -34,13 +34,13 @@ public class Theme {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
-	public String getDescription() {
-		return description;
+		
+
+	public String getTitle() {
+		return title;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public List<Post> getPost() {
 		return post;
