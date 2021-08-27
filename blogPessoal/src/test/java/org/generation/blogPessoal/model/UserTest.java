@@ -24,14 +24,14 @@ public class UserTest {
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	Validator validator = factory.getValidator();
 	
-	@BeforeEach
+	/*@BeforeEach
 	public void start() {
 	LocalDate date = LocalDate.parse("2000-07-22",
 	DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	user = new User(0L, "João da Silva",
 	"joao@email.com.br", "13465278", date);
 	}
-	
+	*/
 	@Test
 	@DisplayName("✔ Valida Atributos Não Nulos")
 	void testValidaAtributos() {

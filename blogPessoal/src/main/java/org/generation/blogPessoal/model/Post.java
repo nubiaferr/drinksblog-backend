@@ -23,12 +23,12 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@NotBlank(message = "O campo não pode ser vazio ou nulo")
-	@Size(min = 1, max = 100, message = "Tamanho mínimo de 1 caractere e máximo de 100 caracteres")
+	@NotBlank
+	@Size(min = 1, max = 100, message = "Maximum of 100 characters")
 	private String title;
 
-	@NotBlank(message = "O campo não pode ser vazio ou nulo")
-	@Size(min = 1, max = 1000, message = "Tamanho mínimo de 10 caracteres e máximo de 1000 caracteres")
+	@NotBlank
+	@Size(min = 1, max = 1000, message = "Maximum of 100 characters")
 	private String text;
 
 	@Temporal(TemporalType.TIMESTAMP)

@@ -41,6 +41,7 @@ public class UserControllerTest {
 	@Autowired
 	private UserRepository userRepository;
 	
+	/*
 	@BeforeAll
 	public void start(){
 		LocalDate dataAdmin = LocalDate.parse("1990-07-22",
@@ -61,7 +62,7 @@ public class UserControllerTest {
 		userUpdate = new User(2L, "Paulo Antunes de Souza",
 		"paulo_souza@email.com.br", "souza123", dataPut);
 		}
-		
+		*/
 		@Test
 		@Order(1)
 		@DisplayName("✔ Sign in users!")

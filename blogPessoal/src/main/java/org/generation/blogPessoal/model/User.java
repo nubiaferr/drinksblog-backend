@@ -1,6 +1,5 @@
 package org.generation.blogPessoal.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,10 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -26,49 +23,46 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull(message = "O atributo nome é obrigatório")
-	@Size(min = 2, max = 100)
+	@NotBlank
+	@Size(min = 2)
 	private String name;
 	
-	@NotNull(message = "O atributo usuário é obrigatório")
-	@NotBlank(message = "O atributo usuário não pode ser vazio")
-	@Email(message = "O atributo usuário deve ser um email")
-	@Size(min = 5, max = 100)
+	@NotBlank
+	@Size(min = 2)
+	private String photo;
+	
+	@NotBlank
+	private String userType;
+	
+	@NotBlank
+	@Email(message = "Must be an e-mail")
+	@Size(min = 5)
 	private String username;
 	
-	@NotNull(message = "O atributo senha é obrigatório")
-	@Size(min = 8, message = "O atributo senha deve ter no mínimo 8 caracteres")
+	@NotBlank
+	@Size(min = 8, message = "Minimum of 8 characters")
 	private String password;
-	
-	@JsonFormat(pattern="yyyy-MM-dd")
-    private LocalDate age;
-	
-	@OneToMany (mappedBy = "user", cascade = CascadeType.ALL)
+		
+	@OneToMany (mappedBy = "user", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("user")
 	private List<Post> post;
-	
 
-	public User(long id,String name,String username,String password, LocalDate age) {
+
+	public User(long id, @NotBlank @Size(min = 2) String name, @NotBlank @Size(min = 2) String photo,
+			@NotBlank String userType, @NotBlank @Email(message = "Must be an e-mail") @Size(min = 5) String username,
+			@NotBlank @Size(min = 8, message = "Minimum of 8 characters") String password, List<Post> post) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.photo = photo;
+		this.userType = userType;
 		this.username = username;
 		this.password = password;
-		this.age = age;
+		this.post = post;
 	}
-	
-	
+
 	public User() {
 		super();
-	}
-
-
-	public LocalDate getAge() {
-		return age;
-	}
-
-	public void setAge(LocalDate age) {
-		this.age = age;
 	}
 
 	public List<Post> getPost() {
@@ -110,7 +104,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-		
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+	
 	
 	
 	
