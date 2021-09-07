@@ -35,7 +35,7 @@ public class PostController {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/titulo/{title}")
+	@GetMapping("/title/{title}")
 	public ResponseEntity<List<Post>> GetByTitle(@PathVariable String title){
 		return ResponseEntity.ok(repository.findAllByTitleContainingIgnoreCase(title));
 	}
