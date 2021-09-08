@@ -40,10 +40,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getById(@PathVariable Long id){
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	public ResponseEntity getById(@PathVariable Long id){
+		System.out.println("id is " + id);
+		User user = userService.getUserById(id);
+		if (user != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(userService.getUserById(id));
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found");
+		}
 	}
-	
-	
-
 }
